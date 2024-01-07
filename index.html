@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web check for Bluetooth</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #bluetoothStatus {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #007bff;
+        }
+
+        button {
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Web Browser check Bluetooth</h1>
+
+    <div id="bluetoothStatus"></div>
+
+    <button onclick="checkBluetoothSupport()">Check Bluetooth Support</button>
+
+    <script>
+        async function checkBluetoothSupport() {
+            try {
+                if ('bluetooth' in navigator) {
+                    document.getElementById('bluetoothStatus').innerHTML = 'Bluetooth is supported in this browser.';
+                } else {
+                    throw new Error('Bluetooth is not supported in this browser.');
+                }
+            } catch (error) {
+                console.error('Error:', error.message);
+                document.getElementById('bluetoothStatus').innerHTML = `Error: ${error.message}`;
+            }
+        }
+    </script>
+
+</body>
+</html>
